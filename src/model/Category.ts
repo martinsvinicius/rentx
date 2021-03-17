@@ -10,6 +10,10 @@ class Category {
     if (!this.id) {
       this.id = uuid();
     }
+
+    if (!this.created_at) {
+      this.created_at = new Date();
+    }
   }
 }
 
