@@ -1,11 +1,8 @@
+import ICategoriesRepositoryDTO from '../dtos/ICategoriesRepositoryDTO';
+import ICreateCategoryDTO from '../dtos/ICreateCategoryDTO';
 import Category from '../model/Category';
 
-interface ICreateCategory {
-	name: string;
-	description: string;
-}
-
-class CategoriesRepository {
+class CategoriesRepository implements ICategoriesRepositoryDTO {
     private categories: Category[];
 
     constructor() {
@@ -16,7 +13,7 @@ class CategoriesRepository {
       return this.categories;
     }
 
-    public create({ name, description }: ICreateCategory): Category {
+    public create({ name, description }: ICreateCategoryDTO): Category {
     	const category = new Category();
 
     	Object.assign(category, {
