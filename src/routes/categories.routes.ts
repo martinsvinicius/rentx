@@ -9,8 +9,8 @@ const categoriesRepository = new CategoriesRepository();
 
 categoriesRoutes.get('/', (_, res) => {
   const categories = categoriesRepository.index();
-
-  return res.json(categories);
+  
+  return res.json(categories); 
 });
 
 categoriesRoutes.post('/', (req, res) => {
@@ -18,7 +18,7 @@ categoriesRoutes.post('/', (req, res) => {
 
   const createCategoryService = new CreateCategoryService(categoriesRepository);
 
-  const category = createCategoryService.execute({ name, description });
+  const category = createCategoryService.execute({name, description});
 
   return res.status(201).json(category);
 });
