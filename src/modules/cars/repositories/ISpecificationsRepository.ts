@@ -1,10 +1,10 @@
+import ICreateSpecificationDTO from '../dtos/ICreateSpecificationDTO';
 import Specification from '../model/Specification';
-import ICreateSpecificationDTO from './ICreateSpecificationDTO';
 
-interface ISpecificationsRepositoryDTO {
+interface ISpecificationsRepository {
   index(): Specification[];
   create({ name, description }: ICreateSpecificationDTO): Specification;
   findByName(name: string): Specification;
 }
 
-export default ISpecificationsRepositoryDTO;
+export default ISpecificationsRepository;
