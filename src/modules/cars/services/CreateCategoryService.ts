@@ -1,5 +1,5 @@
-import ICategoriesRepositoryDTO from '../dtos/ICategoriesRepositoryDTO';
 import Category from '../model/Category';
+import ICategoriesRepository from '../repositories/ICategoriesRepository';
 
 interface IRequest {
     name: string;
@@ -7,7 +7,7 @@ interface IRequest {
 }
 
 class CreateCategoryService {
-  constructor(private categoriesRepository: ICategoriesRepositoryDTO) {}
+  constructor(private categoriesRepository: ICategoriesRepository) {}
 
   public execute({ name, description }: IRequest): Category {
     const categoryExists = this.categoriesRepository.findByName(name);
