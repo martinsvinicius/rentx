@@ -1,6 +1,6 @@
 import ICreateCategoryDTO from '../dtos/ICreateCategoryDTO';
 import Category from '../model/Category';
-import ICategoriesRepository from './ICategoriesRepository';
+import ICategoriesRepository from './implementations/ICategoriesRepository';
 
 class CategoriesRepository implements ICategoriesRepository {
     private categories: Category[];
