@@ -1,11 +1,11 @@
 import { Router } from 'express';
 import { createCategoryController } from '../modules/cars/useCases/createCategory';
+import listCategoriesController from '../modules/cars/useCases/listCategories';
 
 const categoriesRoutes = Router();
 
-categoriesRoutes.get('/', (_, res) => {
-  const message = 'under development';
-  return res.json({ message });
+categoriesRoutes.get('/', (req, res) => {
+  listCategoriesController.handle(req, res);
 });
 
 categoriesRoutes.post('/', (req, res) => {
