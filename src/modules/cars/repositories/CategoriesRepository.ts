@@ -9,7 +9,7 @@ class CategoriesRepository implements ICategoriesRepository {
     	this.categories = [];
     }
 
-    public index(): Category[] {
+    public list(): Category[] {
       return this.categories;
     }
 

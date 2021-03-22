@@ -2,7 +2,7 @@ import ICreateSpecificationDTO from '../dtos/ICreateSpecificationDTO';
 import Specification from '../model/Specification';
 
 interface ISpecificationsRepository {
-  index(): Specification[];
+  list(): Specification[];
   create({ name, description }: ICreateSpecificationDTO): Specification;
   findByName(name: string): Specification;
 }

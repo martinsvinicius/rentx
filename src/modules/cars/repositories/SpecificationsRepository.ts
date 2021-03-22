@@ -5,7 +5,7 @@ import ISpecificationsRepository from './ISpecificationsRepository';
 class SpecificationsRepository implements ISpecificationsRepository {
   constructor(private specifications: Specification[] = []) {}
 
-  public index(): Specification[] {
+  public list(): Specification[] {
     return this.specifications;
   }
 
