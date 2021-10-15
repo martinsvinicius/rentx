@@ -1,5 +1,6 @@
 import csvParse from 'csv-parse';
 import fs from 'fs';
+import { inject, injectable } from 'tsyringe';
 import CategoriesRepository from '../../repositories/implementations/CategoriesRepository';
 
 interface IImportCategory {
@@ -7,10 +8,14 @@ interface IImportCategory {
   description: string;
 }
 
+@injectable()
 class ImportCategoryUseCase {
-  constructor(private categoriesRepository: CategoriesRepository) {}
+  constructor(
+    @inject('CategoriesRepository')
+    private categoriesRepository: CategoriesRepository
+  ) {}
 
-  loadCategories(file: Express.Multer.File): Promise<IImportCategory[]> {
+  async loadCategories(file: Express.Multer.File): Promise<IImportCategory[]> {
     return new Promise((resolve, reject) => {
       const categories: IImportCategory[] = [];
 
@@ -20,14 +25,17 @@ class ImportCategoryUseCase {
 
       stream.pipe(parseFile);
 
-      parseFile.on('data', async (line) => {
-        const [name, description] = line;
-        categories.push({ name, description });
-      }).on('end', () => {
-        resolve(categories);
-      }).on('error', (err) => {
-        reject(err);
-      });
+      parseFile
+        .on('data', async (line) => {
+          const [name, description] = line;
+          categories.push({ name, description });
+        })
+        .on('end', () => {
+          resolve(categories);
+        })
+        .on('error', (err) => {
+          reject(err);
+        });
     });
   }
 
@@ -39,11 +47,15 @@ class ImportCategoryUseCase {
     categories.map(async (category) => {
       const { name, description } = category;
 
-      const categoryExists = this.categoriesRepository.findByName(name);
+      const categoryExists = await this.categoriesRepository.findByName(name);
 
       if (!categoryExists) {
-        const newCategory = this.categoriesRepository.create({ name, description });
-        createdCategories.push(newCategory);
+        const createdCategory = await this.categoriesRepository.create({
+          name,
+          description,
+        });
+
+        createdCategories.push(createdCategory);
       }
     });
 
