@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
+import { AppError } from '../errors/AppError';
 
 export async function ensureAuthenticated(
   req: Request,
@@ -8,7 +9,7 @@ export async function ensureAuthenticated(
 ) {
   const { authorization } = req.headers;
 
-  if (!authorization) return res.status(401).json({ error: 'Missing token' });
+  if (!authorization) throw new AppError('Missing token', 401);
 
   const [_, token] = authorization.split('Bearer ');
 
@@ -19,6 +20,6 @@ export async function ensureAuthenticated(
 
     return next();
   } catch (error) {
-    return res.status(401).json({ error: error.message });
+    throw new AppError(error.message, 401);
   }
 }

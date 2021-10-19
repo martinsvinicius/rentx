@@ -9,12 +9,8 @@ export class CreateUserController {
 
     const createUserUseCase = container.resolve(CreateUserUseCase);
 
-    try {
-      const user = await createUserUseCase.execute(data);
+    const user = await createUserUseCase.execute(data);
 
-      return res.status(201).json(user);
-    } catch (error) {
-      return res.status(400).json({ error: error.message });
-    }
+    return res.status(201).json(user);
   }
 }

@@ -10,16 +10,12 @@ class CreateSpecificationController {
       CreateSpecificationUseCase
     );
 
-    try {
-      const specification = await createSpecificationUseCase.execute({
-        name,
-        description,
-      });
+    const specification = await createSpecificationUseCase.execute({
+      name,
+      description,
+    });
 
-      return res.status(201).json(specification);
-    } catch (error) {
-      return res.status(400).json({ error: error.message });
-    }
+    return res.status(201).json(specification);
   }
 }
 
