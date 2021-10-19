@@ -40,13 +40,13 @@ export class User {
   }
 
   @BeforeInsert()
-  async setUserData() {
+  protected async setUserData() {
     this.id = uuid();
     this.password = await this.encryptPassword(this.password);
   }
 
   @BeforeUpdate()
-  async setUserPassword() {
+  protected async setUserPassword() {
     this.password = await this.encryptPassword(this.password);
   }
 
