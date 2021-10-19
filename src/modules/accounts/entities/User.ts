@@ -21,7 +21,7 @@ export class User {
   @Column({ name: 'driver_license' })
   driverLicense: string;
 
-  @Column()
+  @Column({ name: 'is_admin', default: false })
   isAdmin: boolean;
 
   @CreateDateColumn({ name: 'created_at' })
