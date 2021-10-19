@@ -5,4 +5,4 @@ const specificationsRouter = Router();
 
 specificationsRouter.post('/', CreateSpecificationController.handle);
 
-export default specificationsRouter;
+export { specificationsRouter };
