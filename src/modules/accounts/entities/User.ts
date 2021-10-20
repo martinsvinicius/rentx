@@ -35,9 +35,8 @@ export class User {
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
-  constructor() {
-    if (!this.id) this.id = uuid();
-  }
+  @Column()
+  avatar: string;
 
   @BeforeInsert()
   protected async setUserData() {
