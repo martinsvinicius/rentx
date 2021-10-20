@@ -14,7 +14,7 @@ export class CreateUserUseCase {
 
     if (userExists) throw new AppError('Email already exists');
 
-    const user = this.usersRepository.create(data);
+    const user = this.usersRepository.save(data);
 
     return user;
   }
