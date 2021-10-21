@@ -1,4 +1,4 @@
-import { AppError } from '../../../../errors/AppError';
+import { AppError } from '@errors/AppError';
 import { User } from '../../entities/User';
 import { IUsersRepository } from '../../repositories/IUsersRepository';
 import { UsersRepositoryMock } from '../../repositories/mocks/UsersRepositoryMock';

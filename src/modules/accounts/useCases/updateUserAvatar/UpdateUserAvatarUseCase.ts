@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
-import { AppError } from '../../../../errors/AppError';
-import { deleteByFilename } from '../../../../utils/fileUtils';
+import { AppError } from '@errors/AppError';
+import { deleteByFilename } from '@utils/fileUtils';
 import { IUpdateUserAvatar } from '../../dtos/IUpdateUserAvatar';
 import { IUsersRepository } from '../../repositories/IUsersRepository';
 
