@@ -38,9 +38,12 @@ export class User {
   @Column()
   avatar: string;
 
+  constructor() {
+    if (!this.id) this.id = uuid();
+  }
+
   @BeforeInsert()
   protected async setUserData() {
-    this.id = uuid();
     this.password = await this.encryptPassword(this.password);
   }
 
