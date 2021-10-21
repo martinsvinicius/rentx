@@ -1,9 +1,10 @@
 import { AppError } from '../../../../errors/AppError';
+import ICategoriesRepository from '../../repositories/ICategoriesRepository';
 import CategoriesRepositoryMock from '../../repositories/mocks/CategoriesRepositoryMock';
 import CreateCategoryUseCase from './CreateCategoryUseCase';
 
 let createCategoryUseCase: CreateCategoryUseCase;
-let categoriesRepositoryMock: CategoriesRepositoryMock;
+let categoriesRepositoryMock: ICategoriesRepository;
 
 describe('Create category', () => {
   beforeEach(() => {
