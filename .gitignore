@@ -1,3 +1,10 @@
 node_modules
+
+# temp files
 tmp
+
+# vscode
 .vscode
+
+# tests
+coverage
