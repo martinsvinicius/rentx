@@ -1,7 +1,7 @@
-import { AppError } from '@errors/AppError';
-import { User } from '../../entities/User';
-import { IUsersRepository } from '../../repositories/IUsersRepository';
-import { UsersRepositoryMock } from '../../repositories/mocks/UsersRepositoryMock';
+import { AppError } from '@shared/errors/AppError';
+import { User } from '@modules/accounts/infra/typeorm/entities/User';
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
+import { UsersRepositoryMock } from '@modules/accounts/repositories/mocks/UsersRepositoryMock';
 import { CreateUserUseCase } from '../createUser/CreateUserUseCase';
 import { AuthenticateUserUseCase } from './AuthenticateUserUseCase';
 

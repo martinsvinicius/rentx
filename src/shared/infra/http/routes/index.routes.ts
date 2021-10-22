@@ -11,4 +11,4 @@ router.use('/specifications', specificationsRouter);
 router.use('/users', usersRouter);
 router.use('/auth', authRoutes);
 
-export default router;
+export { router };
