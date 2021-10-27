@@ -24,7 +24,7 @@ export class Car {
   dailyRate: number;
 
   @Column()
-  available: boolean;
+  available: boolean = true;
 
   @Column({ name: 'license_plate' })
   licensePlate: string;

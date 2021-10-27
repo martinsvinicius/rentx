@@ -62,4 +62,20 @@ describe('Create car', () => {
       await createCarUseCase.execute(car2);
     }).rejects.toBeInstanceOf(AppError);
   });
+
+  it('should create an available car by default', async () => {
+    const car: ICreateCarDTO = {
+      name: 'Car test',
+      brand: 'Brand test',
+      categoryId: 'fake-id',
+      dailyRate: 200,
+      description: 'Car description test',
+      fineAmount: 25,
+      licensePlate: 'TEST19',
+    };
+
+    const createdCar = await carsRepository.create(car);
+
+    expect(createdCar.available).toBe(true);
+  });
 });
