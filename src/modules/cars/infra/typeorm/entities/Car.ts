@@ -24,7 +24,7 @@ export class Car {
   dailyRate: number;
 
   @Column()
-  available: boolean = true;
+  available: boolean;
 
   @Column({ name: 'license_plate' })
   licensePlate: string;
@@ -45,6 +45,7 @@ export class Car {
   constructor() {
     if (!this.id) {
       this.id = uuid();
+      this.available = true;
     }
   }
 }
