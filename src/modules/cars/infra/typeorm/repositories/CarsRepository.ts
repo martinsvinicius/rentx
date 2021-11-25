@@ -1,5 +1,5 @@
 import { ICreateCarDTO } from '@modules/cars/dtos/ICreateCarDTO';
-import { ICarsRepository } from '@modules/cars/repositories/ICarsRepository';
+import { ICarsCriteria, ICarsRepository } from '@modules/cars/repositories/ICarsRepository';
 import { getRepository, Repository } from 'typeorm';
 import { Car } from '../entities/Car';
 
@@ -29,6 +29,12 @@ export class CarsRepository implements ICarsRepository {
   async findByLicensePlate(licensePlate: string): Promise<Car> {
     return await this.repository.findOne({
       where: { licensePlate },
+    });
+  }
+
+  async findAllAvailable(criteria?: ICarsCriteria): Promise<Car[]> {
+    return await this.repository.find({
+      where: { available: true },
     });
   }
 }
